@@ -5,7 +5,6 @@ export const ALL_IMAGES = "ALL_IMAGES";
 const baseUrl = "http://localhost:4000";
 
 function allImages(payload) {
-  console.log(payload);
   return {
     type: ALL_IMAGES,
     payload
@@ -35,9 +34,33 @@ function newImage(payload) {
   };
 }
 
-export const createImage = data => dispatch => {
+export const JWT = "JWT";
+
+function jwt(payload) {
+  return {
+    type: JWT,
+    payload
+  };
+}
+
+export const login = (email, password) => dispatch => {
+  request
+    .post(`${baseUrl}/login`)
+    .send({ email, password })
+    .then(response => {
+      const action = jwt(response.body.jwt);
+
+      dispatch(action);
+    });
+};
+
+export const createImage = data => (dispatch, getState) => {
+  const state = getState();
+  const { user } = state;
+
   request
     .post(`${baseUrl}/image`)
+    .set("Authorization", `Bearer ${user}`)
     .send(data)
     .then(response => {
       const action = newImage(response.body);
