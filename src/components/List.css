@@ -1,0 +1,13 @@
+.uploaded-image {
+  border: 2px solid red;
+  width: 50%;
+  margin-left: 25%;
+}
+
+.uploaded-div h3 {
+  margin-left: 45%;
+}
+
+.uploaded-list {
+  display: inline;
+}

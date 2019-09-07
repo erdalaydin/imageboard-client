@@ -1,8 +1,8 @@
 import React from "react";
-
+import "./CreateForm.css";
 export default function CreateForm(props) {
   return (
-    <form onSubmit={props.onSubmit}>
+    <form className="CreateForm" onSubmit={props.onSubmit}>
       <label>
         Title
         <input

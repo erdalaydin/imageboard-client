@@ -1,19 +1,20 @@
 import React from "react";
 import CreateFormContainer from "./CreateFormContainer";
-import LoginFormContanier from "./LoginFormContainer";
+import LoginFormContainer from "./LoginFormContainer";
+import "./List.css";
 
 export default function List(props) {
   const images = props.images.map(image => (
-    <div key={image.url}>
+    <div class="uploaded-div" key={image.url}>
       <h3>{image.title}</h3>
-      <img src={image.url} alt={image.title} />
+      <img class="uploaded-image" src={image.url} alt={image.title} />
     </div>
   ));
 
-  const form = props.user ? <CreateFormContainer /> : <LoginFormContanier />;
+  const form = props.user ? <CreateFormContainer /> : <LoginFormContainer />;
 
   return (
-    <div>
+    <div className="uploaded-list">
       {form}
       {images}
     </div>

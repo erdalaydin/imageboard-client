@@ -1,8 +1,8 @@
 import React from "react";
-
+import "./LoginForm.css";
 export default function LoginForm(props) {
   return (
-    <form onSubmit={props.onSubmit}>
+    <form className="LoginForm" onSubmit={props.onSubmit}>
       <label>
         email
         <input
